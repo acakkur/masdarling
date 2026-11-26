@@ -1,0 +1,1106 @@
+<!DOCTYPE html>
+<html lang="id" class="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MASDARLING KETAPANGLOR — Sistem Iuran & Transparansi Keuangan</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet">
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body class="antialiased selection:bg-emerald-500/30 selection:text-emerald-200">
+
+
+    <!-- NAVBAR -->
+    <header class="sticky top-0 z-40 bg-navy-950/85 backdrop-blur-xl border-b border-white/10">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+        <!-- Official Logo Masdarling Ketapanglor (Faithful Vector Recreation of Uploaded Logo) -->
+        <a href="#beranda" class="flex items-center gap-3 group">
+          <div class="w-12 h-12 rounded-full bg-white p-0.5 shadow-lg shadow-emerald-950/50 flex items-center justify-center shrink-0 transition-transform group-hover:scale-105">
+            <!-- SVG Exact Representation of Masdarling Ketapanglor Logo (Outer Ring, MASDARLING arc, Globe, Two Hands, Green Leaves, ESTD 2026) -->
+            <svg viewBox="0 0 200 200" class="w-full h-full" xmlns="http://www.w3.org/2000/svg" aria-label="Logo Resmi Masdarling Ketapanglor">
+              <circle cx="100" cy="100" r="95" fill="#FFFFFF" stroke="#18221F" stroke-width="5"></circle>
+              <circle cx="100" cy="100" r="88" fill="none" stroke="#15803D" stroke-width="1.5" stroke-dasharray="3 2"></circle>
+              <defs>
+                <path id="topArc" d="M 30,100 A 70,70 0 1,1 170,100"></path>
+                <path id="bottomArc" d="M 28,105 A 72,72 0 0,0 172,105"></path>
+              </defs>
+              <!-- Top Text: MASDARLING -->
+              <text fill="#15803D" font-family="Plus Jakarta Sans, sans-serif" font-weight="800" font-size="21.5" letter-spacing="1.5">
+                <textPath href="#topArc" startOffset="50%" text-anchor="middle">MASDARLING</textPath>
+              </text>
+              <!-- Bottom Text: MASYARAKAT SADAR LINGKUNGAN -->
+              <text fill="#166534" font-family="Inter, sans-serif" font-weight="700" font-size="10.2" letter-spacing="0.8">
+                <textPath href="#bottomArc" startOffset="50%" text-anchor="middle">MASYARAKAT SADAR LINGKUNGAN</textPath>
+              </text>
+              <!-- Globe (Bola Dunia) -->
+              <circle cx="100" cy="96" r="36" fill="#38BDF8" stroke="#1E293B" stroke-width="2.5"></circle>
+              <!-- Continents (Green/Lime) -->
+              <path d="M82,72 C90,68 104,70 110,78 C115,84 105,90 98,88 C92,86 88,94 82,90 C76,86 76,76 82,72 Z" fill="#84CC16" stroke="#1E293B" stroke-width="1.5"></path>
+              <path d="M112,92 C122,90 130,98 126,108 C122,116 112,116 108,108 C104,102 106,94 112,92 Z" fill="#84CC16" stroke="#1E293B" stroke-width="1.5"></path>
+              <path d="M74,102 C82,100 90,108 86,118 C82,122 72,116 74,102 Z" fill="#84CC16" stroke="#1E293B" stroke-width="1.5"></path>
+              <!-- Green Leaves (Daun Hijau) -->
+              <path d="M84,65 C96,55 114,58 122,68 C110,73 94,72 84,65 Z" fill="#22C55E" stroke="#14532D" stroke-width="1.8"></path>
+              <path d="M126,84 C136,92 135,108 125,116 C121,105 121,94 126,84 Z" fill="#22C55E" stroke="#14532D" stroke-width="1.8"></path>
+              <path d="M74,84 C64,92 65,108 75,116 C79,105 79,94 74,84 Z" fill="#22C55E" stroke="#14532D" stroke-width="1.8"></path>
+              <!-- Two Hands Cradling Globe (Kedua Tangan) -->
+              <path d="M58,92 C54,108 64,128 84,136 L98,140 L98,128 C82,124 70,112 68,94 C67,89 60,88 58,92 Z" fill="#FDBA74" stroke="#1E293B" stroke-width="2.2"></path>
+              <path d="M142,92 C146,108 136,128 116,136 L102,140 L102,128 C118,124 130,112 132,94 C133,89 140,88 142,92 Z" fill="#FDBA74" stroke="#1E293B" stroke-width="2.2"></path>
+              <!-- ESTD 2026 -->
+              <text x="100" y="183" text-anchor="middle" fill="#15803D" font-family="Inter, sans-serif" font-weight="700" font-size="8.5">ESTD 2026</text>
+            </svg>
+          </div>
+          <div>
+            <div class="flex items-center gap-2">
+              <span class="font-display font-extrabold text-lg tracking-tight text-white">MASDARLING</span>
+              <span class="px-2 py-0.5 text-[10px] font-bold uppercase tracking-wider rounded bg-emerald-500/20 text-emerald-300 border border-emerald-500/30">RW 01–05</span>
+            </div>
+            <p class="text-xs text-slate-400 font-medium tracking-wide">KETAPANGLOR • ESTD 2026</p>
+          </div>
+        </a>
+
+        <!-- Desktop Navigation -->
+        <nav class="hidden lg:flex items-center gap-7 text-sm font-medium text-slate-300">
+          <a href="#beranda" class="hover:text-emerald-400 transition">Beranda</a>
+          <a href="#tentang" class="hover:text-emerald-400 transition">Tentang</a>
+          <a href="#transparansi" class="hover:text-emerald-400 transition">Transparansi Keuangan</a>
+          <a href="#cek-tagihan" class="hover:text-emerald-400 transition">Laporan &amp; Cek Iuran</a>
+          <a href="#kontak" class="hover:text-emerald-400 transition">Kontak</a>
+        </nav>
+
+        <!-- Action Buttons -->
+        <div class="hidden sm:flex items-center gap-3">
+          <button onclick="openModal('modal-login')" class="px-4 py-2.5 rounded-xl text-sm font-semibold text-slate-200 bg-navy-800 hover:bg-navy-700 border border-white/10 transition flex items-center gap-2 cursor-pointer">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="shield-check" aria-hidden="true" class="lucide lucide-shield-check w-4 h-4 text-cyan-400"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"></path><path d="m9 12 2 2 4-4"></path></svg>
+            <span>Login Pengurus</span>
+          </button>
+          <a href="#cek-tagihan" class="px-4 py-2.5 rounded-xl text-sm font-semibold text-navy-950 bg-emerald-400 hover:bg-emerald-300 shadow-lg shadow-emerald-500/20 transition flex items-center gap-2">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="qr-code" aria-hidden="true" class="lucide lucide-qr-code w-4 h-4"><rect width="5" height="5" x="3" y="3" rx="1"></rect><rect width="5" height="5" x="16" y="3" rx="1"></rect><rect width="5" height="5" x="3" y="16" rx="1"></rect><path d="M21 16h-3a2 2 0 0 0-2 2v3"></path><path d="M21 21v.01"></path><path d="M12 7v3a2 2 0 0 1-2 2H7"></path><path d="M3 12h.01"></path><path d="M12 3h.01"></path><path d="M12 16v.01"></path><path d="M16 12h1"></path><path d="M21 12v.01"></path><path d="M12 21v-1"></path></svg>
+            <span>Bayar Iuran</span>
+          </a>
+        </div>
+
+        <!-- Mobile Menu Button -->
+        <button onclick="toggleMobileMenu()" class="lg:hidden p-2.5 rounded-xl bg-navy-800 border border-white/10 text-slate-200">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="menu" aria-hidden="true" class="lucide lucide-menu w-5 h-5"><path d="M4 5h16"></path><path d="M4 12h16"></path><path d="M4 19h16"></path></svg>
+        </button>
+      </div>
+
+      <!-- Mobile Navigation Drawer -->
+      <div id="mobile-nav" class="hidden lg:hidden bg-navy-900 border-b border-white/10 px-4 pt-3 pb-5 space-y-2">
+        <a href="#beranda" onclick="toggleMobileMenu()" class="block px-3 py-2.5 rounded-lg text-sm font-medium text-slate-200 hover:bg-navy-800">Beranda</a>
+        <a href="#tentang" onclick="toggleMobileMenu()" class="block px-3 py-2.5 rounded-lg text-sm font-medium text-slate-200 hover:bg-navy-800">Tentang &amp; Filosofi Logo</a>
+        <a href="#transparansi" onclick="toggleMobileMenu()" class="block px-3 py-2.5 rounded-lg text-sm font-medium text-slate-200 hover:bg-navy-800">Transparansi Keuangan</a>
+        <a href="#cek-tagihan" onclick="toggleMobileMenu()" class="block px-3 py-2.5 rounded-lg text-sm font-medium text-slate-200 hover:bg-navy-800">Cek Tagihan &amp; Bayar Iuran</a>
+        <a href="#kontak" onclick="toggleMobileMenu()" class="block px-3 py-2.5 rounded-lg text-sm font-medium text-slate-200 hover:bg-navy-800">Kontak</a>
+        <div class="pt-2 flex flex-col gap-2">
+          <button onclick="toggleMobileMenu(); openModal('modal-login')" class="w-full py-2.5 rounded-xl text-sm font-semibold bg-navy-800 text-cyan-300 border border-cyan-500/30">
+            Login Admin / Petugas RW
+          </button>
+          <a href="#cek-tagihan" onclick="toggleMobileMenu()" class="w-full py-2.5 rounded-xl text-center text-sm font-semibold bg-emerald-500 text-navy-950">
+            Bayar Iuran Sekarang
+          </a>
+        </div>
+      </div>
+    </header>
+
+    <!-- HERO SECTION -->
+    <section id="beranda" class="relative pt-12 pb-16 lg:pt-20 lg:pb-24 overflow-hidden">
+      <!-- Background Ambient Mesh -->
+      <div class="absolute inset-0 pointer-events-none">
+        <div class="absolute -top-24 left-1/4 w-96 h-96 bg-emerald-500/15 rounded-full blur-[120px]"></div>
+        <div class="absolute top-1/3 right-10 w-80 h-80 bg-cyan-500/10 rounded-full blur-[110px]"></div>
+      </div>
+
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <div class="grid lg:grid-cols-12 gap-10 lg:gap-12 items-center">
+          <!-- Hero Left Copy -->
+          <div class="lg:col-span-7 space-y-6">
+            <div class="inline-flex items-center gap-2.5 px-3.5 py-1.5 rounded-full bg-emerald-500/10 border border-emerald-500/25 text-emerald-300 text-xs font-semibold tracking-wide">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="leaf" aria-hidden="true" class="lucide lucide-leaf w-3.5 h-3.5"><path d="M11 20a10 10 0 0010-10 25.9 25.9 0 00-1.04-7.281 1 1 0 00-1.755-.325C15.833 5.5 13 5.5 9.8 6.1A7 7 0 0011 20"></path><path d="M2 21a5 5 0 012.911-4.544C7.613 15.212 8.351 15.24 11 13"></path></svg>
+              <span>MASYARAKAT SADAR LINGKUNGAN • DESA KETAPANGLOR</span>
+            </div>
+
+            <h1 class="font-display font-extrabold text-3xl sm:text-4xl lg:text-[44px] leading-[1.15] tracking-tight text-white">
+              BERSAMA WARGA, WUJUDKAN LINGKUNGAN YANG <span class="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-cyan-300">BERSIH DAN BERKELANJUTAN</span>
+            </h1>
+
+            <p class="text-base sm:text-lg text-slate-300 leading-relaxed max-w-2xl">
+              Masdarling Ketapanglor merupakan sistem pengelolaan iuran dan transparansi keuangan masyarakat untuk mendukung kebersihan, kepedulian, serta keberlanjutan lingkungan di seluruh wilayah RW 01 hingga RW 05.
+            </p>
+
+            <!-- Hero CTAs -->
+            <div class="flex flex-wrap items-center gap-3.5 pt-2">
+              <a href="#transparansi" class="px-6 py-3.5 rounded-xl font-semibold text-sm bg-emerald-500 hover:bg-emerald-400 text-navy-950 shadow-lg shadow-emerald-500/25 transition flex items-center gap-2">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="bar-chart-3" aria-hidden="true" class="lucide lucide-bar-chart-3 w-4 h-4"><path d="M3 3v16a2 2 0 0 0 2 2h16"></path><path d="M18 17V9"></path><path d="M13 17V5"></path><path d="M8 17v-3"></path></svg>
+                <span>Lihat Transparansi</span>
+              </a>
+              <a href="#cek-tagihan" class="px-6 py-3.5 rounded-xl font-semibold text-sm bg-navy-800 hover:bg-navy-700 text-white border border-emerald-500/30 transition flex items-center gap-2">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="wallet" aria-hidden="true" class="lucide lucide-wallet w-4 h-4 text-emerald-400"><path d="M19 7V4a1 1 0 0 0-1-1H5a2 2 0 0 0 0 4h15a1 1 0 0 1 1 1v4h-3a2 2 0 0 0 0 4h3a1 1 0 0 0 1-1v-2a1 1 0 0 0-1-1"></path><path d="M3 5v14a2 2 0 0 0 2 2h15a1 1 0 0 0 1-1v-4"></path></svg>
+                <span>Bayar Iuran</span>
+              </a>
+              <a href="#cek-tagihan" class="px-5 py-3.5 rounded-xl font-semibold text-sm text-cyan-300 hover:text-cyan-200 hover:bg-white/5 transition flex items-center gap-2">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="search-check" aria-hidden="true" class="lucide lucide-search-check w-4 h-4"><path d="m8 11 2 2 4-4"></path><circle cx="11" cy="11" r="8"></circle><path d="m21 21-4.3-4.3"></path></svg>
+                <span>Cek Tagihan</span>
+              </a>
+            </div>
+
+            <!-- Security & Stack Trust Badges -->
+            <div class="pt-4 grid grid-cols-3 gap-4 border-t border-white/10 max-w-lg">
+              <div>
+                <p class="text-xs text-slate-400">Cakupan Wilayah</p>
+                <p class="font-display font-bold text-lg text-white">5 RW Aktif</p>
+              </div>
+              <div>
+                <p class="text-xs text-slate-400">Buku Kas (Ledger)</p>
+                <p class="font-display font-bold text-lg text-emerald-400">Append-Only</p>
+              </div>
+              <div>
+                <p class="text-xs text-slate-400">Sinkronisasi</p>
+                <p class="font-display font-bold text-lg text-cyan-400">Sheets Queue</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Hero Right: Financial Preview Card (Inspired by Verdelo Dark Emerald Card UI) -->
+          <div class="lg:col-span-5">
+            <div class="fin-card-emerald rounded-2xl p-6 sm:p-7 relative overflow-hidden">
+              <div class="flex items-center justify-between mb-6">
+                <div class="flex items-center gap-2.5">
+                  <span class="w-2.5 h-2.5 rounded-full bg-emerald-400"></span>
+                  <span class="text-xs font-semibold uppercase tracking-wider text-emerald-200">Saldo Kas Bersih Lingkungan</span>
+                </div>
+                <span class="px-2.5 py-1 rounded-lg text-[11px] font-semibold bg-black/30 text-emerald-300 border border-emerald-400/20">
+                  Terverifikasi Ledger
+                </span>
+              </div>
+
+              <div class="mb-6">
+                <p class="text-xs text-emerald-200/80 mb-1">Total Saldo Kas Aktif (Pemasukan − PengeLUAR RWan Disetujui)</p>
+                <div id="hero-saldo-kas" class="font-display font-extrabold text-3xl sm:text-4xl text-white tracking-tight">
+                  Rp 18.450.000
+                </div>
+              </div>
+
+              <!-- Mini Metrics Inside Card -->
+              <div class="grid grid-cols-2 gap-3 mb-6">
+                <div class="bg-black/30 rounded-xl p-3.5 border border-white/10">
+                  <div class="flex items-center justify-between text-xs text-slate-300 mb-1">
+                    <span>Pemasukan Bulan Ini</span>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="arrow-up-right" aria-hidden="true" class="lucide lucide-arrow-up-right w-3.5 h-3.5 text-emerald-400"><path d="M7 7h10v10"></path><path d="M7 17 17 7"></path></svg>
+                  </div>
+                  <p id="hero-pemasukan-bulan" class="font-display font-bold text-base sm:text-lg text-emerald-400">Rp 4.820.000</p>
+                </div>
+                <div class="bg-black/30 rounded-xl p-3.5 border border-white/10">
+                  <div class="flex items-center justify-between text-xs text-slate-300 mb-1">
+                    <span>PengeLUAR RWan Bulan Ini</span>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="arrow-down-right" aria-hidden="true" class="lucide lucide-arrow-down-right w-3.5 h-3.5 text-amber-400"><path d="m7 7 10 10"></path><path d="M17 7v10H7"></path></svg>
+                  </div>
+                  <p id="hero-pengeLUAR RWan-bulan" class="font-display font-bold text-base sm:text-lg text-amber-300">Rp 1.650.000</p>
+                </div>
+              </div>
+
+              <!-- Progress Bar Capaian -->
+              <div class="bg-black/25 rounded-xl p-4 border border-white/10">
+                <div class="flex items-center justify-between text-xs mb-2">
+                  <span class="text-slate-300 font-medium">Partisipasi Iuran Warga (504 Pelanggan)</span>
+                  <span id="hero-persen-bayar" class="font-bold text-emerald-300">84.5% Lunas</span>
+                </div>
+                <div class="w-full h-2.5 bg-navy-950 rounded-full overflow-hidden">
+                  <div id="hero-progress-bar" class="h-full bg-gradient-to-r from-emerald-400 to-cyan-400 rounded-full transition-all duration-500" style="width: 84.5%"></div>
+                </div>
+                <div class="flex justify-between text-[11px] text-slate-400 mt-2">
+                  <span id="hero-warga-lunas">426 Warga Lunas</span>
+                  <span id="hero-warga-belum">78 Warga Belum Bayar</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================================================================== -->
+    <!-- SECTION: STATISTIK REAL-TIME & TRANSPARANSI KEUANGAN PUBLIK           -->
+    <!-- ===================================================================== -->
+    <section id="transparansi" class="py-16 bg-navy-900/60 border-y border-white/5">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-10">
+          <div>
+            <span class="text-xs font-bold uppercase tracking-widest text-emerald-400">Akuntabilitas Publik</span>
+            <h2 class="font-display font-bold text-2xl sm:text-3xl text-white mt-1">Transparansi Keuangan Masdarling</h2>
+            <p class="text-sm text-slate-400 mt-1 max-w-2xl">
+              Data agregat real-time dari buku besar (ledger) Cloudflare D1. Privasi warga dilindungi: halaman publik hanya menampilkan statistik agregat tanpa mengekspos data pribadi sensitif.
+            </p>
+          </div>
+          <div class="flex items-center gap-2.5">
+            <button onclick="fetchInitialEndpointData()" id="btn-sync-awal" class="px-4 py-2.5 rounded-xl text-xs font-semibold bg-navy-800 hover:bg-navy-700 text-cyan-300 border border-cyan-500/30 transition flex items-center gap-2 cursor-pointer">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="refresh-cw" aria-hidden="true" class="lucide lucide-refresh-cw w-3.5 h-3.5"><path d="M3 12a9 9 0 0 1 9-9 9.75 9.75 0 0 1 6.74 2.74L21 8"></path><path d="M21 3v5h-5"></path><path d="M21 12a9 9 0 0 1-9 9 9.75 9.75 0 0 1-6.74-2.74L3 16"></path><path d="M8 16H3v5"></path></svg>
+              <span>Tarik Data Endpoint Awal</span>
+            </button>
+            <button onclick="exportPublicCSV()" class="px-4 py-2.5 rounded-xl text-xs font-semibold bg-emerald-500/15 hover:bg-emerald-500/25 text-emerald-300 border border-emerald-500/30 transition flex items-center gap-2 cursor-pointer">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="download" aria-hidden="true" class="lucide lucide-download w-3.5 h-3.5"><path d="M12 15V3"></path><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><path d="m7 10 5 5 5-5"></path></svg>
+              <span>Unduh Rekap Agregat (CSV)</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- 8 KPI Summary Cards -->
+        <div class="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
+          <div class="fin-card rounded-2xl p-5">
+            <div class="flex items-center justify-between text-slate-400 text-xs font-medium mb-2">
+              <span>TOTAL WARGA / PELANGGAN</span>
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="users" aria-hidden="true" class="lucide lucide-users w-4 h-4 text-cyan-400"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path><path d="M16 3.128a4 4 0 0 1 0 7.744"></path><path d="M22 21v-2a4 4 0 0 0-3-3.87"></path><circle cx="9" cy="7" r="4"></circle></svg>
+            </div>
+            <p id="stat-total-warga" class="font-display font-extrabold text-2xl sm:text-3xl text-white">504 Warga</p>
+            <p class="text-xs text-slate-400 mt-1">Tersebar di RW 01 – RW 05</p>
+          </div>
+
+          <div class="fin-card rounded-2xl p-5">
+            <div class="flex items-center justify-between text-slate-400 text-xs font-medium mb-2">
+              <span>TOTAL IURAN TERKUMPUL</span>
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="piggy-bank" aria-hidden="true" class="lucide lucide-piggy-bank w-4 h-4 text-emerald-400"><path d="M11 17h3v2a1 1 0 0 0 1 1h2a1 1 0 0 0 1-1v-3a3.16 3.16 0 0 0 2-2h1a1 1 0 0 0 1-1v-2a1 1 0 0 0-1-1h-1a5 5 0 0 0-2-4V3a4 4 0 0 0-3.2 1.6l-.3.4H11a6 6 0 0 0-6 6v1a5 5 0 0 0 2 4v3a1 1 0 0 0 1 1h2a1 1 0 0 0 1-1z"></path><path d="M16 10h.01"></path><path d="M2 8v1a2 2 0 0 0 2 2h1"></path></svg>
+            </div>
+            <p id="stat-total-terkumpul" class="font-display font-extrabold text-2xl sm:text-3xl text-emerald-400">Rp 42.650.000</p>
+            <p class="text-xs text-emerald-300/80 mt-1">Akumulasi Tahun Berjalan</p>
+          </div>
+
+          <div class="fin-card rounded-2xl p-5">
+            <div class="flex items-center justify-between text-slate-400 text-xs font-medium mb-2">
+              <span>SUDAH BAYAR (LUNAS)</span>
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="check-circle-2" aria-hidden="true" class="lucide lucide-check-circle-2 w-4 h-4 text-emerald-400"><circle cx="12" cy="12" r="10"></circle><path d="m16 9-5.5 5.5L8 12"></path></svg>
+            </div>
+            <p id="stat-sudah-bayar" class="font-display font-extrabold text-2xl sm:text-3xl text-emerald-400">426 Warga</p>
+            <p id="stat-persen-lunas" class="text-xs text-slate-400 mt-1">84.5% dari total tagihan</p>
+          </div>
+
+          <div class="fin-card rounded-2xl p-5">
+            <div class="flex items-center justify-between text-slate-400 text-xs font-medium mb-2">
+              <span>BELUM BAYAR / TUNGGAKAN</span>
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="alert-circle" aria-hidden="true" class="lucide lucide-alert-circle w-4 h-4 text-rose-400"><circle cx="12" cy="12" r="10"></circle><line x1="12" x2="12" y1="8" y2="12"></line><line x1="12" x2="12.01" y1="16" y2="16"></line></svg>
+            </div>
+            <p id="stat-belum-bayar" class="font-display font-extrabold text-2xl sm:text-3xl text-rose-400">78 Warga</p>
+            <p class="text-xs text-rose-300/80 mt-1">15.5% menunggu pelunasan</p>
+          </div>
+        </div>
+
+        <!-- Charts & Per-RW Recap Grid -->
+        <div class="grid lg:grid-cols-12 gap-6">
+          <!-- Cash Flow Chart (12 Months) -->
+          <div class="lg:col-span-7 fin-card rounded-2xl p-6">
+            <div class="flex flex-wrap items-center justify-between gap-2 mb-4">
+              <div>
+                <h3 class="font-display font-bold text-base sm:text-lg text-white">Arus Kas Pemasukan &amp; PengeLUAR RWan</h3>
+                <p class="text-xs text-slate-400">Perbandingan iuran terverifikasi vs pengeLUAR RWan operasional yang disetujui</p>
+              </div>
+              <span class="px-2.5 py-1 rounded-lg text-xs font-medium bg-emerald-500/10 text-emerald-300 border border-emerald-500/20">
+                Tahun 2026
+              </span>
+            </div>
+            <div class="h-64 w-full">
+              <canvas id="publicCashflowChart" width="543" height="230" style="display: block; box-sizing: border-box; height: 256px; width: 604px;"></canvas>
+            </div>
+          </div>
+
+          <!-- Rekap Per RW (RW 01 - RW 05) -->
+          <div class="lg:col-span-5 fin-card rounded-2xl p-6 flex flex-col justify-between">
+            <div>
+              <div class="flex items-center justify-between mb-4">
+                <div>
+                  <h3 class="font-display font-bold text-base sm:text-lg text-white">Rekapitulasi per Wilayah RW</h3>
+                  <p class="text-xs text-slate-400">Capaian pelunasan iuran RW 01 s/d RW 05</p>
+                </div>
+                <span class="badge-rw px-2.5 py-1 rounded-lg text-xs font-semibold">5 RW</span>
+              </div>
+
+              <div id="public-rw-recap-list" class="space-y-3.5">
+          <div class="p-3 rounded-xl bg-navy-950/70 border border-white/5">
+            <div class="flex items-center justify-between text-xs mb-1.5">
+              <span class="font-semibold text-white">RW 01 (Jl. Erlangga)</span>
+              <span class="font-bold text-emerald-400">85% (106/124)</span>
+            </div>
+            <div class="w-full h-2 bg-navy-800 rounded-full overflow-hidden">
+              <div class="h-full bg-gradient-to-r from-emerald-500 to-cyan-400 rounded-full" style="width: 85%"></div>
+            </div>
+          </div>
+        
+          <div class="p-3 rounded-xl bg-navy-950/70 border border-white/5">
+            <div class="flex items-center justify-between text-xs mb-1.5">
+              <span class="font-semibold text-white">RW 02 (Jl. Joko &amp; Untung)</span>
+              <span class="font-bold text-emerald-400">85% (92/108)</span>
+            </div>
+            <div class="w-full h-2 bg-navy-800 rounded-full overflow-hidden">
+              <div class="h-full bg-gradient-to-r from-emerald-500 to-cyan-400 rounded-full" style="width: 85%"></div>
+            </div>
+          </div>
+        
+          <div class="p-3 rounded-xl bg-navy-950/70 border border-white/5">
+            <div class="flex items-center justify-between text-xs mb-1.5">
+              <span class="font-semibold text-white">RW 03 (Jl. Sari &amp; Koncer)</span>
+              <span class="font-bold text-emerald-400">84% (81/96)</span>
+            </div>
+            <div class="w-full h-2 bg-navy-800 rounded-full overflow-hidden">
+              <div class="h-full bg-gradient-to-r from-emerald-500 to-cyan-400 rounded-full" style="width: 84%"></div>
+            </div>
+          </div>
+        
+          <div class="p-3 rounded-xl bg-navy-950/70 border border-white/5">
+            <div class="flex items-center justify-between text-xs mb-1.5">
+              <span class="font-semibold text-white">RW 04 (Jl. Sari &amp; Koncer)</span>
+              <span class="font-bold text-emerald-400">83% (76/92)</span>
+            </div>
+            <div class="w-full h-2 bg-navy-800 rounded-full overflow-hidden">
+              <div class="h-full bg-gradient-to-r from-emerald-500 to-cyan-400 rounded-full" style="width: 83%"></div>
+            </div>
+          </div>
+        
+          <div class="p-3 rounded-xl bg-navy-950/70 border border-white/5">
+            <div class="flex items-center justify-between text-xs mb-1.5">
+              <span class="font-semibold text-white">RW 05 (Jl. Pendidikan)</span>
+              <span class="font-bold text-emerald-400">85% (71/84)</span>
+            </div>
+            <div class="w-full h-2 bg-navy-800 rounded-full overflow-hidden">
+              <div class="h-full bg-gradient-to-r from-emerald-500 to-cyan-400 rounded-full" style="width: 85%"></div>
+            </div>
+          </div>
+        </div>
+            </div>
+
+            <div class="mt-5 pt-4 border-t border-white/10 flex items-center justify-between text-xs text-slate-400">
+              <span>Sumber: Ledger D1 &amp; Sheets Sync</span>
+              <span class="text-emerald-400 font-medium">Audit Trail Aktif</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================================================================== -->
+    <!-- SECTION: LAYANAN MANDIRI WARGA (CEK TAGIHAN & BAYAR IURAN QRIS/TUNAI)  -->
+    <!-- ===================================================================== -->
+    <section id="cek-tagihan" class="py-16">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <!-- Header matching uploaded screenshot "contoh data.jpg" -->
+        <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-4 mb-8">
+          <div>
+            <span class="text-xs font-bold uppercase tracking-widest text-emerald-400">LAYANAN MANDIRI &amp; TRANSPARANSI WARGA</span>
+            <h2 class="font-display font-extrabold text-2xl sm:text-3xl text-white mt-1">Cek Status &amp; Bayar Iuran Sampah</h2>
+            <p class="text-sm text-slate-400 mt-1">
+              Bayar iuran bulanan via QRIS / Transfer / Tunai atau cek status pembayaran warga Desa Ketapanglor secara real-time.
+            </p>
+          </div>
+          <div class="flex flex-wrap items-center gap-3">
+            <button onclick="openPaymentModal(null)" class="px-4 py-2.5 rounded-xl text-sm font-semibold bg-emerald-500 hover:bg-emerald-400 text-navy-950 shadow-lg shadow-emerald-500/20 transition flex items-center gap-2 cursor-pointer">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="qr-code" aria-hidden="true" class="lucide lucide-qr-code w-4 h-4"><rect width="5" height="5" x="3" y="3" rx="1"></rect><rect width="5" height="5" x="16" y="3" rx="1"></rect><rect width="5" height="5" x="3" y="16" rx="1"></rect><path d="M21 16h-3a2 2 0 0 0-2 2v3"></path><path d="M21 21v.01"></path><path d="M12 7v3a2 2 0 0 1-2 2H7"></path><path d="M3 12h.01"></path><path d="M12 3h.01"></path><path d="M12 16v.01"></path><path d="M16 12h1"></path><path d="M21 12v.01"></path><path d="M12 21v-1"></path></svg>
+              <span>Bayar Iuran / Upload Bukti QRIS</span>
+            </button>
+            <button onclick="window.print()" class="px-4 py-2.5 rounded-xl text-sm font-semibold bg-navy-800 hover:bg-navy-700 text-slate-200 border border-white/10 transition flex items-center gap-2 cursor-pointer">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="printer" aria-hidden="true" class="lucide lucide-printer w-4 h-4 text-cyan-400"><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"></path><path d="M6 9V3a1 1 0 0 1 1-1h10a1 1 0 0 1 1 1v6"></path><rect x="6" y="14" width="12" height="8" rx="1"></rect></svg>
+              <span>Cetak Rekap</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- 4 Status Cards matching screenshot layout -->
+        <div class="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-6">
+          <div class="fin-card rounded-2xl p-4 sm:p-5">
+            <p class="text-[11px] font-semibold uppercase tracking-wider text-slate-400">TOTAL PELANGGAN</p>
+            <p id="filter-card-total" class="font-display font-extrabold text-2xl sm:text-3xl text-white mt-1">17 Sampel / 504 Warga</p>
+          </div>
+          <div class="fin-card rounded-2xl p-4 sm:p-5">
+            <p class="text-[11px] font-semibold uppercase tracking-wider text-slate-400">SUDAH BAYAR (LUNAS)</p>
+            <p id="filter-card-paid" class="font-display font-extrabold text-2xl sm:text-3xl text-emerald-400 mt-1">10 Warga</p>
+          </div>
+          <div class="fin-card rounded-2xl p-4 sm:p-5">
+            <p class="text-[11px] font-semibold uppercase tracking-wider text-slate-400">BELUM BAYAR</p>
+            <p id="filter-card-unpaid" class="font-display font-extrabold text-2xl sm:text-3xl text-rose-400 mt-1">5 Warga</p>
+          </div>
+          <div class="fin-card rounded-2xl p-4 sm:p-5">
+            <p class="text-[11px] font-semibold uppercase tracking-wider text-slate-400">CAPAIAN BULAN INI</p>
+            <p id="filter-card-percent" class="font-display font-extrabold text-2xl sm:text-3xl text-cyan-400 mt-1">59%</p>
+          </div>
+        </div>
+
+        <!-- Filter Controls Bar (Bulan, Tahun, Wilayah RW, Status, Cari Nama/Kode) -->
+        <div class="fin-card rounded-2xl p-4 sm:p-5 mb-6">
+          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-3.5">
+            <div>
+              <label class="block text-[11px] font-semibold uppercase tracking-wider text-slate-400 mb-1.5">BULAN</label>
+              <select id="pub-filter-bulan" onchange="renderPublicTable()" class="w-full bg-navy-950 border border-white/10 rounded-xl px-3.5 py-2.5 text-sm text-white focus:outline-none focus:border-emerald-500">
+                <option value="November" selected="">November</option>
+                <option value="Oktober">Oktober</option>
+                <option value="September">September</option>
+                <option value="Desember">Desember</option>
+              </select>
+            </div>
+            <div>
+              <label class="block text-[11px] font-semibold uppercase tracking-wider text-slate-400 mb-1.5">TAHUN</label>
+              <select id="pub-filter-tahun" onchange="renderPublicTable()" class="w-full bg-navy-950 border border-white/10 rounded-xl px-3.5 py-2.5 text-sm text-white focus:outline-none focus:border-emerald-500">
+                <option value="2026" selected="">2026</option>
+                <option value="2025">2025</option>
+              </select>
+            </div>
+            <div>
+              <label class="block text-[11px] font-semibold uppercase tracking-wider text-slate-400 mb-1.5">WILAYAH RW</label>
+              <select id="pub-filter-rw" onchange="renderPublicTable()" class="w-full bg-navy-950 border border-white/10 rounded-xl px-3.5 py-2.5 text-sm text-white focus:outline-none focus:border-emerald-500">
+                <option value="ALL">Semua RW (RW 01 – RW 05)</option>
+                <option value="RW01">RW 01</option>
+                <option value="RW02">RW 02</option>
+                <option value="RW03">RW 03</option>
+                <option value="RW04">RW 04</option>
+                <option value="RW05">RW 05</option>
+              </select>
+            </div>
+            <div>
+              <label class="block text-[11px] font-semibold uppercase tracking-wider text-slate-400 mb-1.5">STATUS</label>
+              <select id="pub-filter-status" onchange="renderPublicTable()" class="w-full bg-navy-950 border border-white/10 rounded-xl px-3.5 py-2.5 text-sm text-white focus:outline-none focus:border-emerald-500">
+                <option value="ALL">Semua Status</option>
+                <option value="PAID">SUDAH BAYAR (LUNAS)</option>
+                <option value="PENDING">MENUNGGU VERIFIKASI</option>
+                <option value="UNPAID">BELUM BAYAR</option>
+              </select>
+            </div>
+            <div>
+              <label class="block text-[11px] font-semibold uppercase tracking-wider text-slate-400 mb-1.5">CARI KODE / NAMA</label>
+              <div class="relative">
+                <input type="text" id="pub-filter-search" oninput="renderPublicTable()" placeholder="Contoh: W001 atau Gemilang..." class="w-full bg-navy-950 border border-white/10 rounded-xl pl-9 pr-3.5 py-2.5 text-sm text-white placeholder-slate-500 focus:outline-none focus:border-emerald-500">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="search" aria-hidden="true" class="lucide lucide-search w-4 h-4 text-slate-500 absolute left-3 top-3"><path d="m21 21-4.34-4.34"></path><circle cx="11" cy="11" r="8"></circle></svg>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Resident Billing Table (Privacy-Safe Public View: No Phone Numbers Exposed) -->
+        <div class="fin-card rounded-2xl overflow-hidden">
+          <div class="overflow-x-auto">
+            <table class="w-full text-left border-collapse">
+              <thead>
+                <tr class="border-b border-white/10 bg-navy-950/70 text-[11px] font-bold uppercase tracking-wider text-slate-400">
+                  <th class="py-3.5 px-5">PELANGGAN</th>
+                  <th class="py-3.5 px-4">JALAN / TEMPAT</th>
+                  <th class="py-3.5 px-4">RT / RW</th>
+                  <th class="py-3.5 px-4">TARIF</th>
+                  <th class="py-3.5 px-4">STATUS BULAN INI</th>
+                  <th class="py-3.5 px-5 text-right">AKSI CEPAT</th>
+                </tr>
+              </thead>
+              <tbody id="public-billing-tbody" class="divide-y divide-white/5 text-sm">
+            <tr class="hover:bg-white/[0.02] transition">
+              <td class="py-3.5 px-5">
+                <span class="block text-[11px] font-bold text-cyan-400">W001</span>
+                <span class="font-semibold text-white">GEMILANG COFFE</span>
+              </td>
+              <td class="py-3.5 px-4 text-slate-300 text-xs">LUAR RW</td>
+              <td class="py-3.5 px-4">
+                <span class="badge-rw px-2.5 py-1 rounded-md text-[11px] font-bold">RT01 / RW01</span>
+              </td>
+              <td class="py-3.5 px-4 font-semibold text-slate-200">Rp 10.000</td>
+              <td class="py-3.5 px-4">
+                <span class="badge-unpaid px-2.5 py-1 rounded-md text-[11px] font-bold tracking-wide">BELUM BAYAR</span>
+              </td>
+              <td class="py-3.5 px-5 text-right">
+                <button onclick="openPaymentModal('uuid-w001')" class="px-3.5 py-1.5 rounded-lg text-xs font-bold bg-emerald-500 hover:bg-emerald-400 text-navy-950 transition cursor-pointer">Bayar</button>
+              </td>
+            </tr>
+          
+            <tr class="hover:bg-white/[0.02] transition">
+              <td class="py-3.5 px-5">
+                <span class="block text-[11px] font-bold text-cyan-400">W003</span>
+                <span class="font-semibold text-white">GHOZALI COFFE</span>
+              </td>
+              <td class="py-3.5 px-4 text-slate-300 text-xs">LUAR RW</td>
+              <td class="py-3.5 px-4">
+                <span class="badge-rw px-2.5 py-1 rounded-md text-[11px] font-bold">RT01 / RW01</span>
+              </td>
+              <td class="py-3.5 px-4 font-semibold text-slate-200">Rp 10.000</td>
+              <td class="py-3.5 px-4">
+                <span class="badge-paid px-2.5 py-1 rounded-md text-[11px] font-bold tracking-wide">SUDAH BAYAR</span>
+              </td>
+              <td class="py-3.5 px-5 text-right">
+                <button onclick="downloadReceipt('W003')" class="px-3 py-1.5 rounded-lg text-xs font-semibold bg-navy-800 hover:bg-navy-700 text-emerald-300 border border-emerald-500/30 cursor-pointer">Kuitansi</button>
+              </td>
+            </tr>
+          
+            <tr class="hover:bg-white/[0.02] transition">
+              <td class="py-3.5 px-5">
+                <span class="block text-[11px] font-bold text-cyan-400">W004</span>
+                <span class="font-semibold text-white">WARUNG PATIGON</span>
+              </td>
+              <td class="py-3.5 px-4 text-slate-300 text-xs">LUAR RW</td>
+              <td class="py-3.5 px-4">
+                <span class="badge-rw px-2.5 py-1 rounded-md text-[11px] font-bold">RT01 / RW01</span>
+              </td>
+              <td class="py-3.5 px-4 font-semibold text-slate-200">Rp 10.000</td>
+              <td class="py-3.5 px-4">
+                <span class="badge-unpaid px-2.5 py-1 rounded-md text-[11px] font-bold tracking-wide">BELUM BAYAR</span>
+              </td>
+              <td class="py-3.5 px-5 text-right">
+                <button onclick="openPaymentModal('uuid-w004')" class="px-3.5 py-1.5 rounded-lg text-xs font-bold bg-emerald-500 hover:bg-emerald-400 text-navy-950 transition cursor-pointer">Bayar</button>
+              </td>
+            </tr>
+          
+            <tr class="hover:bg-white/[0.02] transition">
+              <td class="py-3.5 px-5">
+                <span class="block text-[11px] font-bold text-cyan-400">W005</span>
+                <span class="font-semibold text-white">TOKO FADHIL</span>
+              </td>
+              <td class="py-3.5 px-4 text-slate-300 text-xs">LUAR RW</td>
+              <td class="py-3.5 px-4">
+                <span class="badge-rw px-2.5 py-1 rounded-md text-[11px] font-bold">RT01 / RW01</span>
+              </td>
+              <td class="py-3.5 px-4 font-semibold text-slate-200">Rp 10.000</td>
+              <td class="py-3.5 px-4">
+                <span class="badge-paid px-2.5 py-1 rounded-md text-[11px] font-bold tracking-wide">SUDAH BAYAR</span>
+              </td>
+              <td class="py-3.5 px-5 text-right">
+                <button onclick="downloadReceipt('W005')" class="px-3 py-1.5 rounded-lg text-xs font-semibold bg-navy-800 hover:bg-navy-700 text-emerald-300 border border-emerald-500/30 cursor-pointer">Kuitansi</button>
+              </td>
+            </tr>
+          
+            <tr class="hover:bg-white/[0.02] transition">
+              <td class="py-3.5 px-5">
+                <span class="block text-[11px] font-bold text-cyan-400">W006</span>
+                <span class="font-semibold text-white">KASTO</span>
+              </td>
+              <td class="py-3.5 px-4 text-slate-300 text-xs">LUAR RW</td>
+              <td class="py-3.5 px-4">
+                <span class="badge-rw px-2.5 py-1 rounded-md text-[11px] font-bold">RT01 / RW01</span>
+              </td>
+              <td class="py-3.5 px-4 font-semibold text-slate-200">Rp 15.000</td>
+              <td class="py-3.5 px-4">
+                <span class="badge-unpaid px-2.5 py-1 rounded-md text-[11px] font-bold tracking-wide">BELUM BAYAR</span>
+              </td>
+              <td class="py-3.5 px-5 text-right">
+                <button onclick="openPaymentModal('uuid-w006')" class="px-3.5 py-1.5 rounded-lg text-xs font-bold bg-emerald-500 hover:bg-emerald-400 text-navy-950 transition cursor-pointer">Bayar</button>
+              </td>
+            </tr>
+          
+            <tr class="hover:bg-white/[0.02] transition">
+              <td class="py-3.5 px-5">
+                <span class="block text-[11px] font-bold text-cyan-400">W007</span>
+                <span class="font-semibold text-white">ISA</span>
+              </td>
+              <td class="py-3.5 px-4 text-slate-300 text-xs">LUAR RW</td>
+              <td class="py-3.5 px-4">
+                <span class="badge-rw px-2.5 py-1 rounded-md text-[11px] font-bold">RT01 / RW01</span>
+              </td>
+              <td class="py-3.5 px-4 font-semibold text-slate-200">Rp 15.000</td>
+              <td class="py-3.5 px-4">
+                <span class="badge-pending px-2.5 py-1 rounded-md text-[11px] font-bold tracking-wide">VERIFIKASI</span>
+              </td>
+              <td class="py-3.5 px-5 text-right">
+                <button onclick="openPaymentModal('uuid-w007')" class="px-3.5 py-1.5 rounded-lg text-xs font-bold bg-emerald-500 hover:bg-emerald-400 text-navy-950 transition cursor-pointer">Bayar</button>
+              </td>
+            </tr>
+          
+            <tr class="hover:bg-white/[0.02] transition">
+              <td class="py-3.5 px-5">
+                <span class="block text-[11px] font-bold text-cyan-400">W008</span>
+                <span class="font-semibold text-white">MBAK DA TUGU</span>
+              </td>
+              <td class="py-3.5 px-4 text-slate-300 text-xs">LUAR RW</td>
+              <td class="py-3.5 px-4">
+                <span class="badge-rw px-2.5 py-1 rounded-md text-[11px] font-bold">RT01 / RW01</span>
+              </td>
+              <td class="py-3.5 px-4 font-semibold text-slate-200">Rp 10.000</td>
+              <td class="py-3.5 px-4">
+                <span class="badge-paid px-2.5 py-1 rounded-md text-[11px] font-bold tracking-wide">SUDAH BAYAR</span>
+              </td>
+              <td class="py-3.5 px-5 text-right">
+                <button onclick="downloadReceipt('W008')" class="px-3 py-1.5 rounded-lg text-xs font-semibold bg-navy-800 hover:bg-navy-700 text-emerald-300 border border-emerald-500/30 cursor-pointer">Kuitansi</button>
+              </td>
+            </tr>
+          
+            <tr class="hover:bg-white/[0.02] transition">
+              <td class="py-3.5 px-5">
+                <span class="block text-[11px] font-bold text-cyan-400">W011</span>
+                <span class="font-semibold text-white">TOKO SULKHAN</span>
+              </td>
+              <td class="py-3.5 px-4 text-slate-300 text-xs">LUAR RW</td>
+              <td class="py-3.5 px-4">
+                <span class="badge-rw px-2.5 py-1 rounded-md text-[11px] font-bold">RT01 / RW01</span>
+              </td>
+              <td class="py-3.5 px-4 font-semibold text-slate-200">Rp 10.000</td>
+              <td class="py-3.5 px-4">
+                <span class="badge-paid px-2.5 py-1 rounded-md text-[11px] font-bold tracking-wide">SUDAH BAYAR</span>
+              </td>
+              <td class="py-3.5 px-5 text-right">
+                <button onclick="downloadReceipt('W011')" class="px-3 py-1.5 rounded-lg text-xs font-semibold bg-navy-800 hover:bg-navy-700 text-emerald-300 border border-emerald-500/30 cursor-pointer">Kuitansi</button>
+              </td>
+            </tr>
+          
+            <tr class="hover:bg-white/[0.02] transition">
+              <td class="py-3.5 px-5">
+                <span class="block text-[11px] font-bold text-cyan-400">W015</span>
+                <span class="font-semibold text-white">BALAI DESA</span>
+              </td>
+              <td class="py-3.5 px-4 text-slate-300 text-xs">LUAR RW</td>
+              <td class="py-3.5 px-4">
+                <span class="badge-rw px-2.5 py-1 rounded-md text-[11px] font-bold">RT01 / RW01</span>
+              </td>
+              <td class="py-3.5 px-4 font-semibold text-slate-200">SEIKHLASNYA</td>
+              <td class="py-3.5 px-4">
+                <span class="badge-paid px-2.5 py-1 rounded-md text-[11px] font-bold tracking-wide">SUDAH BAYAR</span>
+              </td>
+              <td class="py-3.5 px-5 text-right">
+                <button onclick="downloadReceipt('W015')" class="px-3 py-1.5 rounded-lg text-xs font-semibold bg-navy-800 hover:bg-navy-700 text-emerald-300 border border-emerald-500/30 cursor-pointer">Kuitansi</button>
+              </td>
+            </tr>
+          
+            <tr class="hover:bg-white/[0.02] transition">
+              <td class="py-3.5 px-5">
+                <span class="block text-[11px] font-bold text-cyan-400">W016</span>
+                <span class="font-semibold text-white">MUSHOLAH AL MABRUR</span>
+              </td>
+              <td class="py-3.5 px-4 text-slate-300 text-xs">JL. ERLANGGA</td>
+              <td class="py-3.5 px-4">
+                <span class="badge-rw px-2.5 py-1 rounded-md text-[11px] font-bold">RT05 / RW01</span>
+              </td>
+              <td class="py-3.5 px-4 font-semibold text-slate-200">SEIKHLASNYA</td>
+              <td class="py-3.5 px-4">
+                <span class="badge-paid px-2.5 py-1 rounded-md text-[11px] font-bold tracking-wide">SUDAH BAYAR</span>
+              </td>
+              <td class="py-3.5 px-5 text-right">
+                <button onclick="downloadReceipt('W016')" class="px-3 py-1.5 rounded-lg text-xs font-semibold bg-navy-800 hover:bg-navy-700 text-emerald-300 border border-emerald-500/30 cursor-pointer">Kuitansi</button>
+              </td>
+            </tr>
+          </tbody>
+            </table>
+          </div>
+          <!-- Pagination Footer -->
+          <div class="px-5 py-3.5 bg-navy-950/50 border-t border-white/10 flex flex-wrap items-center justify-between gap-3 text-xs text-slate-400">
+            <span id="public-table-info">Menampilkan 10 dari 17 data terfilter</span>
+            <div class="flex items-center gap-2">
+              <button onclick="changePublicPage(-1)" class="px-3 py-1.5 rounded-lg bg-navy-800 hover:bg-navy-700 text-slate-200 border border-white/10 cursor-pointer">Sebelumnya</button>
+              <span id="public-page-indicator" class="px-2.5 py-1 font-semibold text-emerald-400">Hal 1 / 2</span>
+              <button onclick="changePublicPage(1)" class="px-3 py-1.5 rounded-lg bg-navy-800 hover:bg-navy-700 text-slate-200 border border-white/10 cursor-pointer">Berikutnya</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================================================================== -->
+    <!-- SECTION: TENTANG & FILOSOFI LOGO MASDARLING KETAPANGLOR               -->
+    <!-- ===================================================================== -->
+    <section id="tentang" class="py-16 bg-navy-900/50 border-t border-white/5">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center max-w-3xl mx-auto mb-12">
+          <span class="text-xs font-bold uppercase tracking-widest text-emerald-400">Identitas &amp; Nilai Gotong Royong</span>
+          <h2 class="font-display font-extrabold text-2xl sm:text-3xl text-white mt-1">Filosofi Logo Masdarling Ketapanglor</h2>
+          <p class="text-sm text-slate-400 mt-2">
+            Setiap elemen pada lambang resmi Masyarakat Sadar Lingkungan (ESTD 2026) mencerminkan komitmen kolektif warga dalam menjaga kebersihan dan kelestarian alam.
+          </p>
+        </div>
+
+        <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-5">
+          <div class="fin-card rounded-2xl p-6">
+            <div class="w-11 h-11 rounded-xl bg-cyan-500/15 border border-cyan-500/30 flex items-center justify-center text-cyan-400 mb-4">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="globe" aria-hidden="true" class="lucide lucide-globe w-5 h-5"><circle cx="12" cy="12" r="10"></circle><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"></path><path d="M2 12h20"></path></svg>
+            </div>
+            <h3 class="font-display font-bold text-base text-white mb-2">Bola Dunia</h3>
+            <p class="text-xs text-slate-400 leading-relaxed">
+              Melambangkan bumi sebagai tempat berlangsungnya kehidupan seluruh makhluk hidup yang wajib dirawat bersama.
+            </p>
+          </div>
+
+          <div class="fin-card rounded-2xl p-6">
+            <div class="w-11 h-11 rounded-xl bg-amber-500/15 border border-amber-500/30 flex items-center justify-center text-amber-400 mb-4">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="heart-handshake" aria-hidden="true" class="lucide lucide-heart-handshake w-5 h-5"><path d="M19.414 14.414C21 12.828 22 11.5 22 9.5a5.5 5.5 0 0 0-9.591-3.676.6.6 0 0 1-.818.001A5.5 5.5 0 0 0 2 9.5c0 2.3 1.5 4 3 5.5l5.535 5.362a2 2 0 0 0 2.879.052 2.12 2.12 0 0 0-.004-3 2.124 2.124 0 1 0 3-3 2.124 2.124 0 0 0 3.004 0 2 2 0 0 0 0-2.828l-1.881-1.882a2.41 2.41 0 0 0-3.409 0l-1.71 1.71a2 2 0 0 1-2.828 0 2 2 0 0 1 0-2.828l2.823-2.762"></path></svg>
+            </div>
+            <h3 class="font-display font-bold text-base text-white mb-2">Kedua Tangan</h3>
+            <p class="text-xs text-slate-400 leading-relaxed">
+              Melambangkan kepedulian, perlindungan, dan tanggung jawab nyata manusia dalam menjaga kebersihan lingkungan.
+            </p>
+          </div>
+
+          <div class="fin-card rounded-2xl p-6">
+            <div class="w-11 h-11 rounded-xl bg-emerald-500/15 border border-emerald-500/30 flex items-center justify-center text-emerald-400 mb-4">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="sprout" aria-hidden="true" class="lucide lucide-sprout w-5 h-5"><path d="M14 9.536V7a4 4 0 0 1 4-4h1.5a.5.5 0 0 1 .5.5V5a4 4 0 0 1-4 4 4 4 0 0 0-4 4c0 2 1 3 1 5a5 5 0 0 1-1 3"></path><path d="M4 9a5 5 0 0 1 8 4 5 5 0 0 1-8-4"></path><path d="M5 21h14"></path></svg>
+            </div>
+            <h3 class="font-display font-bold text-base text-white mb-2">Daun Hijau</h3>
+            <p class="text-xs text-slate-400 leading-relaxed">
+              Melambangkan kehidupan, kesuburan, pertumbuhan, kesejukan, serta harapan keberlanjutan alam.
+            </p>
+          </div>
+
+          <div class="fin-card rounded-2xl p-6">
+            <div class="w-11 h-11 rounded-xl bg-blue-500/15 border border-blue-500/30 flex items-center justify-center text-blue-400 mb-4">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="circle-dot" aria-hidden="true" class="lucide lucide-circle-dot w-5 h-5"><circle cx="12" cy="12" r="1"></circle><circle cx="12" cy="12" r="10"></circle></svg>
+            </div>
+            <h3 class="font-display font-bold text-base text-white mb-2">Lingkaran LUAR RW &amp; Warna</h3>
+            <p class="text-xs text-slate-400 leading-relaxed">
+              Persatuan masyarakat yang lestari. Hijau bermakna kesejukan alam; Biru bermakna air, kedamaian, dan keseimbangan.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FOOTER / KONTAK -->
+    <footer id="kontak" class="bg-navy-950 border-t border-white/10 pt-12 pb-8 mt-auto">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid md:grid-cols-3 gap-8 pb-8 border-b border-white/10">
+          <div>
+            <div class="flex items-center gap-2.5 mb-3">
+              <span class="font-display font-extrabold text-lg text-white">MASDARLING KETAPANGLOR</span>
+            </div>
+            <p class="text-xs text-slate-400 leading-relaxed">
+              Sistem Pengelolaan Iuran Kebersihan &amp; Transparansi Keuangan Masyarakat Desa Ketapanglor (RW 01 – RW 05).
+            </p>
+          </div>
+          <div>
+            <h4 class="font-display font-bold text-sm text-white mb-3">Sekretariat &amp; Wilayah</h4>
+            <ul class="space-y-2 text-xs text-slate-400">
+              <li class="flex items-center gap-2"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="map-pin" aria-hidden="true" class="lucide lucide-map-pin w-4 h-4 text-emerald-400"><path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0"></path><circle cx="12" cy="10" r="3"></circle></svg>Balai Desa Ketapang Lor, Ketapang Lor, Kec. Ujungpangkah, Kabupaten Gresik, Jawa Timur</li>
+              <li class="flex items-center gap-2"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="layers" aria-hidden="true" class="lucide lucide-layers w-4 h-4 text-cyan-400"><path d="M12.83 2.18a2 2 0 0 0-1.66 0L2.6 6.08a1 1 0 0 0 0 1.83l8.58 3.91a2 2 0 0 0 1.66 0l8.58-3.9a1 1 0 0 0 0-1.83z"></path><path d="M2 12a1 1 0 0 0 .58.91l8.6 3.91a2 2 0 0 0 1.65 0l8.58-3.9A1 1 0 0 0 22 12"></path><path d="M2 17a1 1 0 0 0 .58.91l8.6 3.91a2 2 0 0 0 1.65 0l8.58-3.9A1 1 0 0 0 22 17"></path></svg> Cakupan Operasional: RW 01, RW 02, RW 03, RW 04, RW 05</li>
+              <li class="flex items-center gap-2"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="share-2" aria-hidden="true" class="lucide lucide-share-2 w-4 h-4 text-emerald-400"><circle cx="18" cy="5" r="3"></circle><circle cx="6" cy="12" r="3"></circle><circle cx="18" cy="19" r="3"></circle><line x1="8.59" x2="15.42" y1="13.51" y2="17.49"></line><line x1="15.41" x2="8.59" y1="6.51" y2="10.49"></line></svg> Sosial Media: @masdarling.ketapanglor</li>
+            </ul>
+          </div>
+          <div>
+            <h4 class="font-display font-bold text-sm text-white mb-3">Akses Sistem &amp; Deployment</h4>
+            <div class="flex flex-wrap gap-2">
+              <button onclick="openModal('modal-login')" class="px-3.5 py-2 rounded-lg text-xs font-semibold bg-navy-800 hover:bg-navy-700 text-white border border-white/10 cursor-pointer">
+                Portal Admin / Petugas
+              </button>
+            </div>
+          </div>
+        </div>
+        <div class="pt-6 flex flex-col sm:flex-row items-center justify-between gap-2 text-xs text-slate-500">
+          <p>© 2026 MASDARLING KETAPANGLOR (Masyarakat Sadar Lingkungan). Seluruh hak cipta dilindungi.</p>
+          <p>Keamanan: RBAC • Prepared SQL • Immutable Ledger • R2 Signed URLs</p>
+          <p>v.0.1</p>
+        </div>
+      </div>
+    </footer>
+  </div>
+
+  <!-- ===================================================================== -->
+  <!-- VIEW 2: AUTHENTICATED SAAS FINANCIAL DASHBOARD (ADMIN & PETUGAS RW)   -->
+  <!-- ===================================================================== -->
+  <div id="dashboard-view" class="hidden min-h-screen flex bg-navy-950">
+    <!-- Sidebar Desktop -->
+    <aside id="dash-sidebar" class="fixed inset-y-0 left-0 z-40 w-64 bg-navy-900 border-r border-white/10 flex flex-col transition-transform duration-300 -translate-x-full lg:translate-x-0">
+      <!-- Brand Header -->
+      <div class="h-16 px-5 flex items-center justify-between border-b border-white/10">
+        <div class="flex items-center gap-2.5">
+          <div class="w-8 h-8 rounded-lg bg-emerald-500 flex items-center justify-center text-navy-950 font-extrabold font-display">M</div>
+          <div>
+            <p class="font-display font-bold text-sm text-white leading-none">MASDARLING</p>
+            <p id="sidebar-role-badge" class="text-[10px] font-semibold text-emerald-400 mt-1">ADMIN KENDALI PENUH</p>
+          </div>
+        </div>
+        <button onclick="toggleDashSidebar()" class="lg:hidden text-slate-400 hover:text-white">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="x" aria-hidden="true" class="lucide lucide-x w-5 h-5"><path d="M18 6 6 18"></path><path d="m6 6 12 12"></path></svg>
+        </button>
+      </div>
+
+      <!-- Navigation Menu -->
+      <div class="flex-1 overflow-y-auto py-4 px-3 space-y-1 text-sm" id="sidebar-menu-container">
+        <!-- Populated dynamically based on role (ADMIN vs PETUGAS) -->
+      </div>
+
+      <!-- Bottom User Profile & Logout -->
+      <div class="p-4 border-t border-white/10 bg-navy-950/60">
+        <div class="flex items-center gap-3 mb-3">
+          <div class="w-9 h-9 rounded-full bg-emerald-500/20 border border-emerald-500/40 flex items-center justify-center text-emerald-300 font-bold text-xs" id="user-avatar-initials">AD</div>
+          <div class="min-w-0 flex-1">
+            <p id="user-display-name" class="text-xs font-bold text-white truncate">Admin Ketapanglor</p>
+            <p id="user-display-scope" class="text-[11px] text-cyan-400 truncate">Semua Wilayah (RW 01–05)</p>
+          </div>
+        </div>
+        <div class="grid grid-cols-2 gap-2">
+          <button onclick="switchToPublicView()" class="py-2 px-2.5 rounded-lg text-xs font-medium bg-navy-800 hover:bg-navy-700 text-slate-300 border border-white/10 flex items-center justify-center gap-1.5 cursor-pointer">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="globe" aria-hidden="true" class="lucide lucide-globe w-3.5 h-3.5"><circle cx="12" cy="12" r="10"></circle><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"></path><path d="M2 12h20"></path></svg>
+            <span>Web Publik</span>
+          </button>
+          <button onclick="logoutUser()" class="py-2 px-2.5 rounded-lg text-xs font-medium bg-rose-500/15 hover:bg-rose-500/25 text-rose-300 border border-rose-500/30 flex items-center justify-center gap-1.5 cursor-pointer">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="log-out" aria-hidden="true" class="lucide lucide-log-out w-3.5 h-3.5"><path d="m16 17 5-5-5-5"></path><path d="M21 12H9"></path><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path></svg>
+            <span>Logout</span>
+          </button>
+        </div>
+      </div>
+    </aside>
+
+    <!-- Main Dashboard Content Area -->
+    <div class="flex-1 lg:pl-64 flex flex-col min-w-0">
+      <!-- Topbar -->
+      <header class="sticky top-0 z-30 h-16 bg-navy-950/85 backdrop-blur-xl border-b border-white/10 px-4 sm:px-6 flex items-center justify-between gap-4">
+        <div class="flex items-center gap-3">
+          <button onclick="toggleDashSidebar()" class="lg:hidden p-2 rounded-lg bg-navy-800 text-slate-200">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="menu" aria-hidden="true" class="lucide lucide-menu w-5 h-5"><path d="M4 5h16"></path><path d="M4 12h16"></path><path d="M4 19h16"></path></svg>
+          </button>
+          <div>
+            <div class="flex items-center gap-2 text-xs text-slate-400">
+              <span>Masdarling Ketapanglor</span>
+              <span>/</span>
+              <span id="dash-breadcrumb" class="text-emerald-400 font-medium">Overview</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="flex items-center gap-2.5">
+          <!-- Sheets Sync Status Pill -->
+          <button onclick="setDashTab('sheets-sync')" class="hidden sm:flex items-center gap-2 px-3 py-1.5 rounded-xl bg-navy-900 border border-emerald-500/25 text-xs text-slate-300 hover:border-emerald-400 transition cursor-pointer">
+            <span class="w-2 h-2 rounded-full bg-emerald-400"></span>
+            <span>Sheets Queue: <strong id="topbar-queue-count" class="text-emerald-400">1 Pending</strong></span>
+          </button>
+        </div>
+      </header>
+
+      <!-- Dynamic Tab Content -->
+      <main id="dash-main-content" class="flex-1 p-4 sm:p-6 lg:p-8 max-w-7xl w-full mx-auto space-y-6">
+        <!-- Rendered via JS based on active tab & role -->
+      </main>
+    </div>
+  </div>
+
+  <!-- ===================================================================== -->
+  <!-- MODALS: LOGIN, BAYAR IURAN, & ARSITEKTUR CLOUDFLARE                   -->
+  <!-- ===================================================================== -->
+
+  <!-- MODAL 1: LOGIN ADMIN / PETUGAS -->
+  <div id="modal-login" class="hidden fixed inset-0 z-50 bg-black/75 backdrop-blur-sm flex items-center justify-center p-4">
+    <div class="fin-card rounded-2xl max-w-md w-full p-6 sm:p-7 relative">
+      <button onclick="closeModal('modal-login')" class="absolute top-5 right-5 text-slate-400 hover:text-white cursor-pointer">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="x" aria-hidden="true" class="lucide lucide-x w-5 h-5"><path d="M18 6 6 18"></path><path d="m6 6 12 12"></path></svg>
+      </button>
+
+      <div class="flex items-center gap-3 mb-5">
+        <div class="w-10 h-10 rounded-xl bg-emerald-500/20 border border-emerald-500/30 flex items-center justify-center text-emerald-400">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="lock" aria-hidden="true" class="lucide lucide-lock w-5 h-5"><rect width="18" height="11" x="3" y="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
+        </div>
+        <div>
+          <h3 class="font-display font-bold text-lg text-white">Login Pengurus &amp; Petugas</h3>
+          <p class="text-xs text-slate-400">Autentikasi Server-Side Cloudflare Workers + Turnstile</p>
+        </div>
+      </div>
+
+      <!-- Role Selector Tabs -->
+      <div class="grid grid-cols-2 gap-2 p-1 bg-navy-950 rounded-xl border border-white/10 mb-5">
+        <button type="button" id="login-tab-admin" onclick="selectLoginRole('ADMIN')" class="py-2 rounded-lg text-xs font-bold bg-emerald-500 text-navy-950 transition cursor-pointer">
+          ADMIN
+        </button>
+        <button type="button" id="login-tab-petugas" onclick="selectLoginRole('PETUGAS')" class="py-2 rounded-lg text-xs font-bold text-slate-400 hover:text-white transition cursor-pointer">
+          PETUGAS PENARIKAN RW
+        </button>
+      </div>
+
+      <form onsubmit="handleLoginSubmit(event)" class="space-y-4">
+        <input type="hidden" id="login-role-input" value="ADMIN">
+        <div>
+          <label class="block text-xs font-semibold text-slate-300 mb-1.5">Username / Email Terdaftar</label>
+          <input type="text" id="login-username" required="" value="admin@masdarling-ketapanglor.id" class="w-full bg-navy-950 border border-white/15 rounded-xl px-3.5 py-2.5 text-sm text-white focus:outline-none focus:border-emerald-500">
+        </div>
+        <div>
+          <label class="block text-xs font-semibold text-slate-300 mb-1.5">Kata Sandi</label>
+          <input type="password" id="login-password" required="" value="AdminMasdarling2026!" class="w-full bg-navy-950 border border-white/15 rounded-xl px-3.5 py-2.5 text-sm text-white focus:outline-none focus:border-emerald-500">
+        </div>
+
+        <div id="petugas-rw-hint" class="hidden p-3 rounded-xl bg-cyan-500/10 border border-cyan-500/25 text-xs text-cyan-200">
+          <strong>Simulasi Otorisasi Wilayah:</strong> Akun petugas ini hanya memiliki assignment pada <strong>RW 01 &amp; RW 02</strong>. Akses ke RW 03–05 ditolak otomatis oleh backend guard.
+        </div>
+
+        <!-- Cloudflare Turnstile Simulation Widget -->
+        <div class="p-3 rounded-xl bg-navy-950 border border-white/10 flex items-center justify-between">
+          <div class="flex items-center gap-2.5">
+            <input type="checkbox" id="turnstile-check" checked="" required="" class="w-4 h-4 accent-emerald-500 rounded cursor-pointer">
+            <span class="text-xs text-slate-300">Verifikasi Keamanan Turnstile</span>
+          </div>
+          <span class="text-[10px] font-bold text-emerald-400 uppercase tracking-wider">Cloudflare</span>
+        </div>
+
+        <button type="submit" class="w-full py-3 rounded-xl font-bold text-sm bg-emerald-500 hover:bg-emerald-400 text-navy-950 shadow-lg shadow-emerald-500/20 transition cursor-pointer">
+          Masuk ke Dashboard
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <!-- MODAL 2: BAYAR IURAN & UPLOAD BUKTI (WARGA / PETUGAS) -->
+  <div id="modal-payment" class="hidden fixed inset-0 z-50 bg-black/75 backdrop-blur-sm flex items-center justify-center p-4 overflow-y-auto">
+    <div class="fin-card rounded-2xl max-w-lg w-full p-6 sm:p-7 relative my-8">
+      <button onclick="closeModal('modal-payment')" class="absolute top-5 right-5 text-slate-400 hover:text-white cursor-pointer">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="x" aria-hidden="true" class="lucide lucide-x w-5 h-5"><path d="M18 6 6 18"></path><path d="m6 6 12 12"></path></svg>
+      </button>
+
+      <div class="flex items-center gap-3 mb-5">
+        <div class="w-10 h-10 rounded-xl bg-emerald-500/20 border border-emerald-500/30 flex items-center justify-center text-emerald-400">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="qr-code" aria-hidden="true" class="lucide lucide-qr-code w-5 h-5"><rect width="5" height="5" x="3" y="3" rx="1"></rect><rect width="5" height="5" x="16" y="3" rx="1"></rect><rect width="5" height="5" x="3" y="16" rx="1"></rect><path d="M21 16h-3a2 2 0 0 0-2 2v3"></path><path d="M21 21v.01"></path><path d="M12 7v3a2 2 0 0 1-2 2H7"></path><path d="M3 12h.01"></path><path d="M12 3h.01"></path><path d="M12 16v.01"></path><path d="M16 12h1"></path><path d="M21 12v.01"></path><path d="M12 21v-1"></path></svg>
+        </div>
+        <div>
+          <h3 class="font-display font-bold text-lg text-white">Pembayaran Iuran Lingkungan</h3>
+          <p class="text-xs text-slate-400">Bukti disimpan aman ke Cloudflare R2 &amp; masuk antrean verifikasi</p>
+        </div>
+      </div>
+
+      <form onsubmit="handlePaymentSubmit(event)" class="space-y-4">
+        <div>
+          <label class="block text-xs font-semibold text-slate-300 mb-1.5">Pilih Pelanggan / Kode Warga</label>
+          <select id="pay-resident-select" onchange="updatePaymentNominal()" required="" class="w-full bg-navy-950 border border-white/15 rounded-xl px-3.5 py-2.5 text-sm text-white focus:outline-none focus:border-emerald-500">
+        <option value="uuid-w001" data-tariff="10000">
+          W001 - GEMILANG COFFE (RT01/RW01) — Tagihan Rp 10.000
+        </option>
+      
+        <option value="uuid-w003" data-tariff="10000">
+          W003 - GHOZALI COFFE (RT01/RW01) — LUNAS
+        </option>
+      
+        <option value="uuid-w004" data-tariff="10000">
+          W004 - WARUNG PATIGON (RT01/RW01) — Tagihan Rp 10.000
+        </option>
+      
+        <option value="uuid-w005" data-tariff="10000">
+          W005 - TOKO FADHIL (RT01/RW01) — LUNAS
+        </option>
+      
+        <option value="uuid-w006" data-tariff="15000">
+          W006 - KASTO (RT01/RW01) — Tagihan Rp 15.000
+        </option>
+      
+        <option value="uuid-w007" data-tariff="15000">
+          W007 - ISA (RT01/RW01) — Tagihan Rp 15.000
+        </option>
+      
+        <option value="uuid-w008" data-tariff="10000">
+          W008 - MBAK DA TUGU (RT01/RW01) — LUNAS
+        </option>
+      
+        <option value="uuid-w011" data-tariff="10000">
+          W011 - TOKO SULKHAN (RT01/RW01) — LUNAS
+        </option>
+      
+        <option value="uuid-w015" data-tariff="10000">
+          W015 - BALAI DESA (RT01/RW01) — LUNAS
+        </option>
+      
+        <option value="uuid-w016" data-tariff="10000">
+          W016 - MUSHOLAH AL MABRUR (RT05/RW01) — LUNAS
+        </option>
+      
+        <option value="uuid-w017" data-tariff="10000">
+          W017 - H. JAMIL (RT05/RW01) — Tagihan Rp 10.000
+        </option>
+      
+        <option value="uuid-w018" data-tariff="15000">
+          W018 - FATIK (RT05/RW01) — LUNAS
+        </option>
+      
+        <option value="uuid-w042" data-tariff="10000">
+          W042 - AHMAD FAUZI (RT02/RW02) — LUNAS
+        </option>
+      
+        <option value="uuid-w043" data-tariff="10000">
+          W043 - SITI AMINAH (RT02/RW02) — Tagihan Rp 10.000
+        </option>
+      
+        <option value="uuid-w105" data-tariff="15000">
+          W105 - BENGKEL MAJU JAYA (RT01/RW03) — LUNAS
+        </option>
+      
+        <option value="uuid-w210" data-tariff="10000">
+          W210 - HENDRA WIJAYA (RT03/RW04) — Tagihan Rp 10.000
+        </option>
+      
+        <option value="uuid-w318" data-tariff="10000">
+          W318 - WARUNG BU YATI (RT02/RW05) — LUNAS
+        </option>
+      </select>
+        </div>
+
+        <div class="grid grid-cols-2 gap-3">
+          <div>
+            <label class="block text-xs font-semibold text-slate-300 mb-1.5">Metode Pembayaran</label>
+            <select id="pay-method" class="w-full bg-navy-950 border border-white/15 rounded-xl px-3.5 py-2.5 text-sm text-white focus:outline-none focus:border-emerald-500">
+              <option value="QRIS">QRIS Masdarling</option>
+              <option value="TRANSFER">Transfer Bank Desa</option>
+              <option value="TUNAI">Tunai via Petugas RW</option>
+            </select>
+          </div>
+          <div>
+            <label class="block text-xs font-semibold text-slate-300 mb-1.5">Nominal Iuran (Rp)</label>
+            <input type="number" id="pay-amount" required="" min="5000" step="1000" value="10000" class="w-full bg-navy-950 border border-white/15 rounded-xl px-3.5 py-2.5 text-sm text-white focus:outline-none focus:border-emerald-500">
+          </div>
+        </div>
+
+        <!-- QRIS Visual Box -->
+        <div class="p-4 rounded-xl bg-navy-950 border border-emerald-500/25 flex items-center gap-4">
+          <div class="w-20 h-20 rounded-lg bg-white p-1.5 shrink-0 flex items-center justify-center">
+            <svg viewBox="0 0 100 100" class="w-full h-full">
+              <rect width="100" height="100" fill="#fff"></rect>
+              <rect x="8" y="8" width="26" height="26" fill="none" stroke="#000" stroke-width="6"></rect>
+              <rect x="15" y="15" width="12" height="12" fill="#000"></rect>
+              <rect x="66" y="8" width="26" height="26" fill="none" stroke="#000" stroke-width="6"></rect>
+              <rect x="73" y="15" width="12" height="12" fill="#000"></rect>
+              <rect x="8" y="66" width="26" height="26" fill="none" stroke="#000" stroke-width="6"></rect>
+              <rect x="15" y="73" width="12" height="12" fill="#000"></rect>
+              <rect x="44" y="12" width="12" height="12" fill="#000"></rect>
+              <rect x="44" y="44" width="14" height="14" fill="#15803D"></rect>
+              <rect x="66" y="48" width="10" height="22" fill="#000"></rect>
+              <rect x="46" y="72" width="26" height="10" fill="#000"></rect>
+            </svg>
+          </div>
+          <div class="text-xs space-y-1">
+            <p class="font-bold text-emerald-400">QRIS RESMI MASDARLING KETAPANGLOR</p>
+            <p class="text-slate-400">NMID: ID1026004829102 • Kas Lingkungan Desa</p>
+            <p class="text-[11px] text-amber-300">Catatan: Upload bukti menghasilkan status SUBMITTED hingga diverifikasi Admin/Petugas.</p>
+          </div>
+        </div>
+
+        <div>
+          <label class="block text-xs font-semibold text-slate-300 mb-1.5">Unggah Bukti Transfer / Foto Struk (R2 Private Bucket)</label>
+          <input type="file" id="pay-receipt-file" accept="image/*,.pdf" class="w-full text-xs text-slate-300 file:mr-3 file:py-2 file:px-3.5 file:rounded-lg file:border-0 file:text-xs file:font-semibold file:bg-emerald-500/20 file:text-emerald-300 hover:file:bg-emerald-500/30 bg-navy-950 border border-white/15 rounded-xl p-1.5">
+        </div>
+
+        <button type="submit" class="w-full py-3 rounded-xl font-bold text-sm bg-emerald-500 hover:bg-emerald-400 text-navy-950 shadow-lg shadow-emerald-500/20 transition cursor-pointer">
+          Kirim Pembayaran &amp; Buat Idempotency Record
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <!-- MODAL 3: ARSITEKTUR CLOUDFLARE FULL-STACK & D1 SCHEMA -->
+  <div id="modal-architecture" class="hidden fixed inset-0 z-50 bg-black/75 backdrop-blur-sm flex items-center justify-center p-4 overflow-y-auto">
+    <div class="fin-card rounded-2xl max-w-3xl w-full p-6 sm:p-8 relative my-8 max-h-[88vh] overflow-y-auto">
+      <button onclick="closeModal('modal-architecture')" class="absolute top-5 right-5 text-slate-400 hover:text-white cursor-pointer">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="x" aria-hidden="true" class="lucide lucide-x w-5 h-5"><path d="M18 6 6 18"></path><path d="m6 6 12 12"></path></svg>
+      </button>
+
+      <h3 class="font-display font-extrabold text-xl text-white mb-2">Arsitektur Cloudflare Full-Stack &amp; Skema D1</h3>
+      <p class="text-xs text-slate-400 mb-5">100% Ekosistem Cloudflare (Pages, Workers, D1, R2, Queues, Cron, Turnstile) + Google Sheets Sync</p>
+
+      <div class="grid sm:grid-cols-2 gap-4 text-xs mb-6">
+        <div class="p-4 rounded-xl bg-navy-950 border border-white/10 space-y-1.5">
+          <p class="font-bold text-emerald-400">1. Cloudflare Workers + D1 SQLite</p>
+          <p class="text-slate-300">Seluruh query menggunakan prepared statements &amp; transaksi atomik. Akses database hanya via Worker API dengan RBAC &amp; Region Guard (RW 01–05).</p>
+        </div>
+        <div class="p-4 rounded-xl bg-navy-950 border border-white/10 space-y-1.5">
+          <p class="font-bold text-cyan-400">2. Cloudflare R2 &amp; Queues</p>
+          <p class="text-slate-300">Bukti bayar &amp; kuitansi disimpan pada R2 private bucket dengan randomized UUID key &amp; signed URL berumur pendek. Sinkronisasi Sheets berjalan asinkron via Queue.</p>
+        </div>
+      </div>
+
+      <div class="bg-navy-950 rounded-xl p-4 border border-white/10 font-mono text-[11px] text-emerald-300 overflow-x-auto">
+<pre>-- RINGKASAN TABEL UTAMA CLOUDFLARE D1 (migrations/0001_init.sql)
+PRAGMA foreign_keys = ON;
+
+CREATE TABLE rw_regions (id TEXT PRIMARY KEY, code TEXT UNIQUE NOT NULL, name TEXT NOT NULL);
+CREATE TABLE rt_regions (id TEXT PRIMARY KEY, rw_id TEXT NOT NULL REFERENCES rw_regions(id), code TEXT NOT NULL);
+CREATE TABLE users (id TEXT PRIMARY KEY, username TEXT UNIQUE NOT NULL, password_hash TEXT NOT NULL, role TEXT CHECK(role IN ('ADMIN','PETUGAS')) NOT NULL, is_active INTEGER DEFAULT 1);
+CREATE TABLE officer_assignments (id TEXT PRIMARY KEY, user_id TEXT NOT NULL REFERENCES users(id), rw_id TEXT NOT NULL REFERENCES rw_regions(id), UNIQUE(user_id, rw_id));
+CREATE TABLE residents (id TEXT PRIMARY KEY, customer_code TEXT UNIQUE NOT NULL, full_name TEXT NOT NULL, address TEXT NOT NULL, rt_id TEXT NOT NULL, rw_id TEXT NOT NULL, category TEXT NOT NULL, monthly_tariff INTEGER NOT NULL, status TEXT DEFAULT 'ACTIVE', deleted_at TEXT);
+CREATE TABLE invoices (id TEXT PRIMARY KEY, invoice_number TEXT UNIQUE NOT NULL, resident_id TEXT NOT NULL REFERENCES residents(id), rw_id TEXT NOT NULL, period_month INTEGER NOT NULL, period_year INTEGER NOT NULL, amount INTEGER NOT NULL, status TEXT CHECK(status IN ('UNPAID','PENDING','PAID','REJECTED','CANCELLED')) NOT NULL, UNIQUE(resident_id, period_month, period_year));
+CREATE TABLE payments (id TEXT PRIMARY KEY, tx_number TEXT UNIQUE NOT NULL, invoice_id TEXT NOT NULL REFERENCES invoices(id), resident_id TEXT NOT NULL, rw_id TEXT NOT NULL, amount INTEGER NOT NULL, method TEXT NOT NULL, status TEXT CHECK(status IN ('PENDING','SUBMITTED','VERIFIED','REJECTED','CANCELLED')) NOT NULL, receipt_r2_key TEXT, idempotency_key TEXT UNIQUE NOT NULL);
+CREATE TABLE ledger_entries (id TEXT PRIMARY KEY, entry_type TEXT CHECK(entry_type IN ('CREDIT','DEBIT','ADJUSTMENT')) NOT NULL, ref_type TEXT NOT NULL, ref_id TEXT NOT NULL, amount INTEGER NOT NULL, balance_after INTEGER NOT NULL, created_by TEXT NOT NULL, created_at TEXT NOT NULL);
+CREATE TABLE audit_logs (id TEXT PRIMARY KEY, actor_id TEXT, action TEXT NOT NULL, entity_type TEXT NOT NULL, entity_id TEXT NOT NULL, payload_json TEXT, created_at TEXT NOT NULL);</pre>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
